@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: create a nwe user called admin
+    builtin.user:
+      name: admin
+      comment: System Administrator
+      uid: 1030
+      group: admin
+      create_home: true
+      shell: /bin/bash
+      password: start123 
+      
