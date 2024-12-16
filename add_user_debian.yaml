@@ -1,14 +1,13 @@
 ---
-- hosts: all
+- hosts: pve-testing # chang this to user 
   become: true
   tasks:
-  - name: create a nwe user called admin
-    builtin.user:
-      name: admin
-      comment: System Administrator
-      uid: 1030
-      group: admin
-      create_home: true
-      shell: /bin/bash
-      password: start123 
-      
+    - name: create a new user called admin
+      ansible.builtin.user:
+        name: admin # change to desired username
+        comment: System Administrator # change to desired full Name or remove Line 
+        uid: 1030 #Set a UserID above 1000 because <1000 is for system Users
+        group: admin
+        create_home: true
+        shell: /bin/bash
+        password: start123 #just for testing purpose. pls only use for testing purposes in save envirnments 
