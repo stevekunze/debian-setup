@@ -1,9 +1,10 @@
 ---
-- hosts: pve-testing # chang this to user 
+- hosts: pvetesting # chang this to user 
   become: true
   tasks:
     - name: create a new user called admin
       ansible.builtin.user:
+        remote_user: root
         name: admin # change to desired username
         comment: System Administrator # change to desired full Name or remove Line 
         uid: 1030 #Set a UserID above 1000 because <1000 is for system Users
