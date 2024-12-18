@@ -1,13 +1,21 @@
 ---
-- hosts: pvetesting # chang this to user 
-  become: true
+- hosts: pvetesting 
   tasks:
-    - name: create a new user called admin
+    - name: install sudo 
+      apt:  
+        name: sudo
+        state: present 
+        update_cache: true  
+    - name: Create new group called admin.
+      ansible.builtin.group:
+        name: admin
+        state: present 
+    - name: Create a new user called admin and add him to group admin.
       ansible.builtin.user:
         name: admin # change to desired username
         comment: System Administrator # change to desired full Name or remove Line 
+        password: '$6$bBDGeq9Hvrm88/WH$qXKVeo9PGwlo3Cbn.PYZVpSUi1ytzjOJGcKLFgtM/.Zx9JQ.BccGui16E8xGNQEnjUI9CbFyDnvvYKC2S5RnH0'
         uid: 1030 #Set a UserID above 1000 because <1000 is for system Users
-        group: admin
+        groups: admin, sudo
         create_home: true
         shell: /bin/bash
-        password: "{{ 'password' | password_hash('sha512') }}" #just for testing purpose. pls only use for testing purposes in save envirnments 

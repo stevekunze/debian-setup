@@ -7,9 +7,9 @@ ansible_user=vagrant
 ansible_ssh_private_key_file=/home/steve/vagrantvms/.vagrant/machines/default/virtualbox/private_key
 
 [pvetesting]
-192.168.178.102
+192.168.178.107
 
 [pvetesting:vars]
 ansible_port=22
 ansible_user=root
-ansible_ssh_pass=m-MnTjnY7vM.9K:nEAk-
+ansible_ssh_private_key_file=/home/steve/.ssh/atest_ed25519
