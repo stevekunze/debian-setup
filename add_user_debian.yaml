@@ -4,11 +4,10 @@
   tasks:
     - name: create a new user called admin
       ansible.builtin.user:
-        remote_user: root
         name: admin # change to desired username
         comment: System Administrator # change to desired full Name or remove Line 
         uid: 1030 #Set a UserID above 1000 because <1000 is for system Users
         group: admin
         create_home: true
         shell: /bin/bash
-        password: start123 #just for testing purpose. pls only use for testing purposes in save envirnments 
+        password: "{{ 'password' | password_hash('sha512') }}" #just for testing purpose. pls only use for testing purposes in save envirnments 
