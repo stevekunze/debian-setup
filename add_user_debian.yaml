@@ -1,5 +1,6 @@
 ---
-- hosts: pvetesting 
+- hosts: pvetesting
+- gather_facts: false 
   tasks:
     - name: install sudo 
       ansible.builtin.pt:  

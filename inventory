@@ -1,6 +1,5 @@
 [pvetesting]
 192.168.178.107
-
 [pvetesting:vars]
 ansible_port=22
 ansible_user=root
