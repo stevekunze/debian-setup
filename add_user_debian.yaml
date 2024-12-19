@@ -1,5 +1,5 @@
 ---
-- hosts: pvetesting #server for testing puproses only
+- hosts: pvetesting
   tasks:
     - name: install sudo 
       apt:  
