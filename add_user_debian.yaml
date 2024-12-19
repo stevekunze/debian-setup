@@ -2,7 +2,7 @@
 - hosts: pvetesting 
   tasks:
     - name: install sudo 
-      aansible.builtin.pt:  
+      ansible.builtin.pt:  
         name: sudo
         state: present 
         update_cache: true  
