@@ -4,7 +4,7 @@
   become: true
   tasks: 
   - name: installing unattended-upgrades 
-    apt:
-      name: unattended-upgrades
+    ansible.buitlin.apt:
+      name: unattended-upgrades # package that automatically install updates. By default it only installs security updates automatically 
       state: present  
       update_cache: true
