@@ -3,14 +3,14 @@
   gather_facts: false
   become: true
   hosts: all
-  
   tasks:
+
   - name: Install packages
     ansible.builtin.apt:
       name: "{{ item }}"
       state: present
       update_cache: true
     loop:
-    - mc
-    - htop
-    - micro
+      - mc
+      - htop
+      - micro

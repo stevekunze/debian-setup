@@ -1,23 +1,26 @@
 ---
 - name: Adds a user with passwort, installs sudo and ads user to sudo group.
-  hosts: pvetesting
+  hosts: all
   gather_facts: false
   tasks:
-    - name: install sudo 
-      ansible_builtin.apt:  
+
+    - name: Install sudo
+      ansible.builtin.apt:
         name: sudo
-        state: present 
-        update_cache: true  
+        state: present
+        update_cache: true
+
     - name: Create new group called admin.
       ansible.builtin.group:
-        name: admin
-        state: present 
+        name: admind
+        state: present
+
     - name: Create a new user called admin and add him to group admin.
       ansible.builtin.user:
-        name: admin # change to desired username
-        comment: System Administrator # change to desired full Name or remove Line 
-        password: '$6$bBDGeq9Hvrm88/WH$qXKVeo9PGwlo3Cbn.PYZVpSUi1ytzjOJGcKLFgtM/.Zx9JQ.BccGui16E8xGNQEnjUI9CbFyDnvvYKC2S5RnH0'
-        uid: 1030 #Set a UserID above 1000 because <1000 is for system Users
+        name: admind # change to desired username
+        comment: System Administrator # change to desired full Name or remove Line
+        password: '$6$BwNZ3HGxLLVOJ0nh$dBD6Ub3OENWBJjNdD3cPkBEzhciIJEZXXO0JBFCWn6mvJlwYn0wgDw9QpaiH8gDtjhoJctYEX4f.mzRV9lr450'
+        uid: 1030 # Set a UserID above 1000 because <1000 is for system Users
         groups: admin, sudo
         create_home: true
         shell: /bin/bash
