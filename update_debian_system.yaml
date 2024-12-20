@@ -1,0 +1,11 @@
+---
+- name: Does quivalent of sudo apt get updade && sudo apt upgrade.
+  hosts: all 
+  become: true 
+  gather_facts: false
+  tasks:
+  - name: update cache and upgrade system
+    ansible.builtin.apt:
+      update_cache: true 
+      cache_valid_time: 3600 
+      upgrade: safe

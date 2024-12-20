@@ -1,8 +1,10 @@
 ---
-- hosts: pvetesting
+- name: Adds a user with passwort, installs sudo and ads user to sudo group.
+  hosts: pvetesting
+  gather_facts: false
   tasks:
     - name: install sudo 
-      apt:  
+      ansible_builtin.apt:  
         name: sudo
         state: present 
         update_cache: true  
