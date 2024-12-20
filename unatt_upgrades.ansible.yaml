@@ -1,0 +1,10 @@
+---
+- name: Installs unattended upgrades on a system 
+  hosts: all 
+  gather_facts: false
+  become: true
+  tasks: 
+  - name: installing unattended-upgrades 
+    ansible.buitlin.apt:
+      name: unattended-upgrades
+      state: present
