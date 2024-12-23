@@ -1,0 +1,15 @@
+---
+- name: Installs 45 drives extensions for cockpit user and smb management. 
+  gather_facts: false
+  become: true
+  hosts: all
+  tasks:
+    - name: Installs gnupg
+      ansible.builtin.apt:
+        name: gnupg
+        state: present
+        update_cache: true
+    - name: download extension for user management
+    - name: install user management extension
+    - name: download smb management exentsion
+    - name: install smb management extension
