@@ -1,11 +1,12 @@
 [all]
 192.168.178.107
-
+192.168.178.112
 [pvetesting]
 192.168.178.107
 
 [debianprod]
 192.168.178.111
+192.168.178.112
 
 [pvetesting:vars]
 ansible_port=22
@@ -15,4 +16,4 @@ ansible_ssh_private_key_file=/home/steve/.ssh/atest_ed25519
 [debianprod:vars]
 ansible_port=22
 ansible_ssh_user=root
-ansible_ssh_private_key_file=/home/steve/.ssh/ed25519_cockpit-nas
+ansible_ssh_private_key_file=/home/steve/.ssh/ed25519_lxc
