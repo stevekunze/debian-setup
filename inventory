@@ -7,6 +7,7 @@
 [debianprod]
 192.168.178.111
 192.168.178.112
+192.168.178.113
 
 [pvetesting:vars]
 ansible_port=22
