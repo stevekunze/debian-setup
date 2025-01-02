@@ -1,0 +1,26 @@
+---
+- name: Adds a user with passwort, installs sudo and ads user to sudo group.
+  hosts: all
+  gather_facts: false
+  tasks:
+
+    - name: Install sudo
+      ansible.builtin.apt:
+        name: sudo
+        state: present
+        update_cache: true
+
+    - name: Create new group called admin.
+      ansible.builtin.group:
+        name: admind
+        state: present
+
+    - name: Create a new user called admin and add him to group admin.
+      ansible.builtin.user:
+        name: admind # change to desired username
+        comment: System Administrator # change to desired full Name or remove Line
+        password: '$6$BwNZ3HGxLLVOJ0nh$dBD6Ub3OENWBJjNdD3cPkBEzhciIJEZXXO0JBFCWn6mvJlwYn0wgDw9QpaiH8gDtjhoJctYEX4f.mzRV9lr450' # hashed password
+        uid: 1030 # Set a UserID above 1000 because <1000 is for system Users
+        groups: admind, sudo,
+        create_home: true
+        shell: /bin/bash
