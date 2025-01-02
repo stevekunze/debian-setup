@@ -24,7 +24,7 @@
         groups: admind, sudo,
         create_home: true
         shell: /bin/bash
-    
+
     - name: Install packages
       ansible.builtin.apt:
         name: "{{ item }}"
