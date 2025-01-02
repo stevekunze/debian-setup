@@ -1,5 +1,5 @@
 ---
-- name: Adds a user with passwort, installs sudo and ads user to sudo group.
+- name: Does essential Tasks when setting up a server with debian
   hosts: all
   gather_facts: false
   tasks:
@@ -10,7 +10,7 @@
         state: present
         update_cache: true
 
-    - name: Create new group called admin.
+    - name: Create new group called admind.
       ansible.builtin.group:
         name: admind
         state: present
@@ -24,3 +24,15 @@
         groups: admind, sudo,
         create_home: true
         shell: /bin/bash
+    
+    - name: Install packages
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: true
+      loop:
+        - mc
+        - htop
+        - micro
+        - unattended-upgrades
+        - gnupg
