@@ -59,8 +59,8 @@
       ansible.builtin.file: 
         path: '/home/"{{ user }}"/.ssh/authorized_keys'
         state: touch
-        owner: admind
-        group: admind
+        owner: "{{ user }}"
+        group: "{{ group }}"
         mode: '0644'
 
     - name: Copy public-key into authorized_keys file
