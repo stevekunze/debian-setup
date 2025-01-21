@@ -51,7 +51,7 @@
       ansible.builtin.file:
         path: '/home/"{{ user }}"/.ssh/'
         state: directory
-        owner: admind
+        owner: admind 
         group: admind
         mode: '0755'
 
@@ -68,7 +68,7 @@
         path: '/home/"{{ user }}"/.ssh/authorized_keys'
         line: "{{ user_ssh_key }}" # replace with new public-key
 
-    - name: Update SSH configuration to be more secure (thanks Jeff!)
+    - name: Update SSH configuration
       ansible.builtin.lineinfile:
         dest: '/etc/ssh/sshd_config'
         regexp: "{{ item.regexp }}"
@@ -76,21 +76,21 @@
         state: present
         validate: 'sshd -T -f %s'
         mode: '0644'
-        with_items:
-          - regexp: "^PasswordAuthentication"
-            line: "PasswordAuthentication no"
-          - regexp: "^PermitRootLogin"
-            line: "PermitRootLogin no"
+      with_items:
+         - regexp: "^PasswordAuthentication"
+           line: "PasswordAuthentication no"
+         - regexp: "^PermitRootLogin"
+           line: "PermitRootLogin no"
             #  - regexp: "^Port"
             #    line: "Port {{ ssh_port }}"
             #  - regexp: "^UseDNS"
             #    line: "UseDNS no"
-          - regexp: "^PermitEmptyPasswords"
-            line: "PermitEmptyPasswords no"
-          - regexp: "^PubKeyAuthentication"
-            line: "PubKeyAuthentication yes"
-          - regexp: "^ChallengeResponseAuthentication"
-            line: "ChallengeResponseAuthentication no"
+         - regexp: "^PermitEmptyPasswords"
+           line: "PermitEmptyPasswords no"
+         - regexp: "^PubKeyAuthentication"
+           line: "PubKeyAuthentication yes"
+         - regexp: "^ChallengeResponseAuthentication"
+           line: "ChallengeResponseAuthentication no"
             # - regexp: "^GSSAPIAuthentication"
             #  line: "GSSAPIAuthentication no"
             # - regexp: "^X11Forwarding"
