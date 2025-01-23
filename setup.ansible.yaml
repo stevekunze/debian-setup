@@ -31,7 +31,7 @@
         comment: System Administrator # change to desired full Name or remove Line
         password: "{{ passw }}" # imported from password.yaml - encrypted with ansible-vault
         uid: 1030 # Set a UserID above 1000 because <1000 is for system Users
-        groups: 
+        groups:
           - "{{ group }}"
           - sudo
         create_home: true
@@ -52,12 +52,12 @@
       ansible.builtin.file:
         path: '/home/{{ user }}/.ssh/'
         state: directory
-        owner: admind 
+        owner: admind
         group: admind
         mode: '0755'
 
     - name: Create authorized_keys file
-      ansible.builtin.file: 
+      ansible.builtin.file:
         path: '/home/{{ user }}/.ssh/authorized_keys'
         state: touch
         owner: "{{ user }}"
